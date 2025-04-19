@@ -1,12 +1,11 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL, 
+  baseURL: process.env.REACT_APP_BACKEND_URL + "/api",
 });
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
-
   if (token) req.headers.Authorization = token;
   return req;
 });
